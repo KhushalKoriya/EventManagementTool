@@ -34,7 +34,7 @@ const EventList = () => {
     if (!user) {
       navigate('/login');
     } else {
-      newEvent.userId = user.id; // Set the user ID for event creation
+      newEvent.userId = user.id; 
       setUsername(user.username);
     }
   }, [navigate]);
@@ -43,8 +43,7 @@ const EventList = () => {
     const getEvents = async () => {
       setLoading(true);
       setError(null);
-      const userId = JSON.parse(localStorage.getItem('user')).id; // Get user ID from local storage
-
+      const userId = JSON.parse(localStorage.getItem('user')).id;
       try {
         const payload = {
           page: currentPage,
@@ -56,7 +55,7 @@ const EventList = () => {
             startDate: startDateFilter,
             endDate: endDateFilter,
           },
-          userId, // Include user ID to fetch events for this user
+          userId, 
         };
 
         const { events: fetchedEvents, totalCount } = await fetchEvents(payload);
@@ -94,7 +93,7 @@ const EventList = () => {
       startDate: newEvent.startDate,
       endDate: newEvent.endDate,
       totalGuests: newEvent.totalGuests,
-      userId, // Use the logged-in user's ID
+      userId, 
     };
   console.log("eventToSave",eventToSave);
   
@@ -135,8 +134,8 @@ const EventList = () => {
   const handleEdit = (event) => {
     setNewEvent({
       ...event,
-      startDate: new Date(event.startDate).toISOString().split('T')[0], // Set date in YYYY-MM-DD format
-      endDate: new Date(event.endDate).toISOString().split('T')[0],     // Set date in YYYY-MM-DD format
+      startDate: new Date(event.startDate).toISOString().split('T')[0], 
+      endDate: new Date(event.endDate).toISOString().split('T')[0],     
     });
     setIsEditing(true);
   };
@@ -165,7 +164,7 @@ const EventList = () => {
       startDate: '',
       endDate: '',
       totalGuests: 0,
-      userId: newEvent.userId, // Reset to logged-in user's ID
+      userId: newEvent.userId, 
     });
     setIsEditing(false);
   };

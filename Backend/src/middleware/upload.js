@@ -1,19 +1,19 @@
 import multer from 'multer';
 
-// Set up multer storage
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'uploads/'); // Ensure this directory exists
+    cb(null, 'uploads/');
   },
   filename: (req, file, cb) => {
     cb(null, `${Date.now()}-${file.originalname}`);
   },
 });
 
-// Initialize multer
+
 const upload = multer({
   storage,
-  limits: { fileSize: 1 * 1024 * 1024 }, // Limit file size to 1MB
+  limits: { fileSize: 1 * 1024 * 1024 }, 
   fileFilter: (req, file, cb) => {
     const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
     if (allowedTypes.includes(file.mimetype)) {
@@ -24,5 +24,5 @@ const upload = multer({
   },
 });
 
-// Export the multer instance
+
 export default upload;

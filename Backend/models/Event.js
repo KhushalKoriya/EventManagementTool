@@ -1,6 +1,5 @@
 import { Model, DataTypes } from 'sequelize';
-import { sequelize } from '../src/database.js'; // Ensure to include the .js extension
-
+import { sequelize } from '../src/database.js'; 
 class Event extends Model {
   static associate(models) {
     Event.belongsTo(models.User, { foreignKey: 'userId', as: 'user' });
@@ -40,8 +39,8 @@ Event.init(
   },
   {
     sequelize,
-    modelName: 'Event', // This line remains unchanged
+    modelName: 'Event',
   }
 );
 
-export default Event; // Use export default instead of module.exports
+export default Event; 

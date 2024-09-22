@@ -1,13 +1,12 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:4000/graphql'; // Update with your actual endpoint
+const API_URL = 'http://localhost:4000/graphql';
 
 
 export const fetchEvents = async (payload) => {
-    console.log("payload", payload);
 
     try {
-        const { page, limit, sort, order, search, filters, userId } = payload; // Destructure payload
+        const { page, limit, sort, order, search, filters, userId } = payload;
 
         const response = await axios.post(API_URL, {
             query: `
@@ -34,10 +33,10 @@ export const fetchEvents = async (payload) => {
                 order,
                 search,
                 filters,
-                userId:Number(userId), // Include user ID in the variables
+                userId: Number(userId),
             },
         },
-    );
+        );
 
         console.log("Response:", response.data);
         return response.data.data.listEvents;
@@ -63,7 +62,7 @@ export const loginAsGuest = async () => {
                 }
             `,
         });
-        
+
         return response.data.data.loginAsGuest; // Return the response from the mutation
     } catch (error) {
         console.error("Error logging in as guest:", error);
@@ -94,7 +93,7 @@ export const createEvent = async (eventData) => {
                 startDate: eventData.startDate,
                 endDate: eventData.endDate,
                 totalGuests: eventData.totalGuests,
-                userId:Number(eventData.userId)
+                userId: Number(eventData.userId)
             },
         });
         return response.data.data.createEvent;
@@ -105,8 +104,7 @@ export const createEvent = async (eventData) => {
 };
 
 export const updateEvent = async (eventData) => {
-    console.log("hvhhhhv",eventData);
-    
+
     try {
         const response = await axios.post(API_URL, {
             query: `
@@ -124,14 +122,14 @@ export const updateEvent = async (eventData) => {
 }
             `,
             variables: {
-                updateEventId: eventData.id, // Use consistent variable naming
+                updateEventId: eventData.id,
                 name: eventData.name,
                 description: eventData.description,
                 images: eventData.images,
                 startDate: eventData.startDate,
                 endDate: eventData.endDate,
                 totalGuests: eventData.totalGuests,
-                userId:Number(eventData.userId)
+                userId: Number(eventData.userId)
             },
         });
         return response.data.data.updateEvent;
@@ -150,7 +148,7 @@ export const deleteEvent = async (eventId) => {
                 }
             `,
             variables: {
-                id: eventId, // Use consistent variable naming
+                id: eventId,
             },
         });
         return response.data.data.deleteEvent;

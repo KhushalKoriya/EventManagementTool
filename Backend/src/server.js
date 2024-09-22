@@ -1,6 +1,5 @@
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
-// import graphqlUploadExpress from "graphql-upload/graphqlUploadExpress.mjs";
 import { typeDefs } from '../schema/typeDefs.js';
 import eventResolvers from '../resolvers/eventResolvers.js';
 import { sequelize } from './database.js';
@@ -8,27 +7,16 @@ import User from '../models/User.js';
 import Event from '../models/Event.js';
 
 const app = express();
-// app.use(graphqlUploadExpress());
+
 
 const server = new ApolloServer({ 
   typeDefs, 
-  resolvers: eventResolvers, // Fixed here
+  resolvers: eventResolvers, 
   csrfPrevention: true,
-  // context: ({ req }) => {
-  //   const token = req.headers.authorization || ''; // Get the token from headers
-  //   console.log("token",token);
-    
-  //   const userId = token ? token.split(' ')[1] : null; // Extract user ID from token
-  //   console.log("userId",userId);
-    
-  //   console.log("userId", userId);
-  //   return { userId }; 
-  // },
 });
 
 const models = { User, Event };
 
-// Call the associate method on each model
 User.associate(models);
 Event.associate(models);
 
@@ -36,9 +24,8 @@ const PORT = process.env.PORT || 4000;
 
 const startServer = async () => {
   try {
-    await server.start(); // Await the server start
+    await server.start(); 
     
-    // Apply graphql-upload middleware before Apollo middleware
     server.applyMiddleware({ app });
     
     console.log('Starting server...');

@@ -121,24 +121,24 @@ ul {
 }
 
 .filter-section {
-    display: flex; /* Use flexbox for layout */
-    flex-wrap: wrap; /* Allow wrapping */
-    justify-content: center; /* Center items */
-    gap: 10px; /* Space between items */
-    margin-top: 20px; /* Space above the filter section */
-    padding: 20px; /* Padding inside the filter section */
-    border: 1px solid #ccc; /* Border around the section */
-    border-radius: 8px; /* Rounded corners */
-    background-color: #f9f9f9; /* Light background color */
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9; 
 }
 
 .filter-section input,
 .filter-section select {
-    padding: 10px; /* Padding for inputs and selects */
-    border: 1px solid #ccc; /* Border for inputs and selects */
-    border-radius: 4px; /* Rounded corners */
-    font-size: 14px; /* Font size */
-    width: 200px; /* Fixed width */
+    padding: 10px; 
+    border: 1px solid #ccc;
+    border-radius: 4px; 
+    font-size: 14px; 
+    width: 200px; 
 }
 .filter-section input:focus,
 .filter-section select:focus {
@@ -146,24 +146,24 @@ ul {
     box-shadow: 0 0 10px rgba(74, 144, 226, 0.3);
 }
 .logout-button {
-    background-color: #f44336; /* Red background */
-    color: white; /* White text */
-    border: none; /* No border */
-    padding: 10px 20px; /* Padding */
-    font-size: 16px; /* Font size */
-    cursor: pointer; /* Pointer cursor */
-    border-radius: 5px; /* Rounded corners */
-    transition: background-color 0.3s ease; /* Smooth transition */
+    background-color: #f44336;
+    color: white; 
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px; 
+    cursor: pointer; 
+    border-radius: 5px; 
+    transition: background-color 0.3s ease; 
 }
 
 .logout-button:hover {
-    background-color: #d32f2f; /* Darker red on hover */
+    background-color: #d32f2f;
 }
 
 .logout-button:focus {
-    outline: none; /* Remove focus outline */
+    outline: none; 
 }
 .event-header {
-    text-align: center; /* Center text */
-    margin-bottom: 20px; /* Space below the header */
+    text-align: center;
+    margin-bottom: 20px;
 }

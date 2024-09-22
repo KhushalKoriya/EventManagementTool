@@ -8,7 +8,6 @@ const eventResolvers = {
       return await Event.findByPk(id, { include: [{ model: User, as: 'user' }] });
     },
 
-    // List events with pagination, sorting, filtering, and search
     listEvents: async (_, { page = 1, limit = 10, sort = 'name', order = 'ASC', search = '', filters = {}, userId }) => {
       const offset = (page - 1) * limit;
       const where = {};
@@ -35,11 +34,10 @@ const eventResolvers = {
   
       // Apply filter for user ID
       if (userId) {
-          where.userId = userId; // Filter by user ID
+          where.userId = userId; 
       }
   
       try {
-          // Query with pagination, sorting, filtering, and search
           const events = await Event.findAndCountAll({
               where,
               limit,
@@ -49,7 +47,7 @@ const eventResolvers = {
           });
   
           return {
-              events: events.rows || [], // Ensure this is always an array
+              events: events.rows || [], 
               totalCount: events.count,
           };
       } catch (error) {
@@ -64,18 +62,15 @@ const eventResolvers = {
 
   Mutation: {
     createEvent: async (_, { name, description, images, startDate, endDate, totalGuests, userId}) => {
-      console.log("sdfredfgfhtfghytg",userId);
       
       if (!userId) {
         throw new Error("Authentication required: User must be logged in to create an event.");
       }
 
-      // Directly use the images array passed from the client
       return await Event.create({ name, description, images, startDate, endDate, totalGuests, userId });
     },
 
     updateEvent: async (_, { id, name, description, images, startDate, endDate, totalGuests,userId }) => {
-      console.log("sbshdbhdshbbdhshb",userId);
       
       const event = await Event.findByPk(id);
       if (!event || event.userId !== userId) {
@@ -93,14 +88,13 @@ const eventResolvers = {
 
     loginAsGuest: async () => {
       try {
-        // Create a guest user with just a username, no need for a role
         const guestUser = await User.create({
-          username: `guest_${Date.now()}`, // Unique guest username using timestamp
+          username: `guest_${Date.now()}`, 
         });
 
         return {
           message: 'Guest user created successfully',
-          user: guestUser, // Return the created user
+          user: guestUser, 
         };
       } catch (error) {
         console.error("Error creating guest user:", error);

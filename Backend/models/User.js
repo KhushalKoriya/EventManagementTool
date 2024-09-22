@@ -1,5 +1,5 @@
 import { Model, DataTypes } from 'sequelize';
-import { sequelize } from '../src/database.js'; // Ensure to include the .js extension
+import { sequelize } from '../src/database.js'; 
 
 class User extends Model {
   static associate(models) {
@@ -21,8 +21,8 @@ User.init(
   },
   {
     sequelize,
-    modelName: 'User', // This line remains unchanged
+    modelName: 'User',
   }
 );
 
-export default User; // Use export default instead of module.exports
+export default User;
